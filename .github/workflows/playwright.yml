@@ -6,8 +6,19 @@ on:
     branches: [main, master]
 # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
 permissions:
-  pages: write # to deploy to Pages
-  id-token: write # to verify the deployment originates from an appropriate source
+  actions: write
+  checks: write
+  contents: write
+  deployments: write
+  id-token: write
+  issues: write
+  discussions: write
+  packages: write
+  pages: write
+  pull-requests: write
+  repository-projects: write
+  security-events: write
+  statuses: write
 jobs:
   Playwright-tests:
     timeout-minutes: 60
