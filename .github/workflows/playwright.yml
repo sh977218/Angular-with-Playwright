@@ -4,11 +4,12 @@ on:
     branches: [main, master]
   pull_request:
     branches: [main, master]
+# Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+permissions:
+  pages: write # to deploy to Pages
+  id-token: write # to verify the deployment originates from an appropriate source
 jobs:
   test:
-    permissions:
-      pages: write # to deploy to Pages
-      id-token: write
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
