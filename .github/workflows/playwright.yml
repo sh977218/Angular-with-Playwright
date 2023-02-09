@@ -9,7 +9,7 @@ permissions:
   pages: write # to deploy to Pages
   id-token: write # to verify the deployment originates from an appropriate source
 jobs:
-  test:
+  Playwright tests:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
@@ -29,13 +29,23 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
-  deploy:
-    environment:
-      name: github-pages
-      url: $
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - name: Publish Playwright tests result
-        id: deployment
-        uses: actions/deploy-pages@v1
+      - name: Publish HTML report to testresults.marcusfelling.com
+        if: always() # We want this to always run, even if test fail prior to this step running
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: playwright-report/ # This is where index.html will be output
+          keep_files: true # Set this to true to make sure we don't wipe out the other content in GitHub Pages
+          user_name: "github-actions[bot]" # This will be the username that gets stamped in the repo commit
+          user_email: "github-actions[bot]@users.noreply.github.com" # This will be the user email that gets stamped in the repo commit
+
+#  Publish Playwright tests result:
+#    environment:
+#      name: github-pages
+#      url: $
+#    runs-on: ubuntu-latest
+#    needs: test
+#    steps:
+#      - name: Publish Playwright tests result
+#        id: deployment
+#        uses: actions/deploy-pages@v1
