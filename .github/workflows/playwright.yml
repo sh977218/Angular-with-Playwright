@@ -9,7 +9,7 @@ permissions:
   pages: write # to deploy to Pages
   id-token: write # to verify the deployment originates from an appropriate source
 jobs:
-  Playwright tests:
+  Playwright-tests:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
