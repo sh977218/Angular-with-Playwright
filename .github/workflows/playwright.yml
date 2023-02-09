@@ -29,14 +29,13 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
-
-deploy:
-  environment:
-    name: github-pages
-    url: $
-  runs-on: ubuntu-latest
-  needs: test
-  steps:
-    - name: Publish Playwright tests result
-      id: deployment
-      uses: actions/deploy-pages@v1
+  deploy:
+    environment:
+      name: github-pages
+      url: $
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Publish Playwright tests result
+        id: deployment
+        uses: actions/deploy-pages@v1
