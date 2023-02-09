@@ -19,10 +19,6 @@ permissions:
   repository-projects: write
   security-events: write
   statuses: write
-# Deploy to the github-pages environment
-environment:
-  name: github-pages
-  url: ${{ steps.deployment.outputs.page_url }}
 jobs:
   Playwright-tests:
     timeout-minutes: 60
