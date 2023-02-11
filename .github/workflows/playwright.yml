@@ -1,10 +1,9 @@
 name: Playwright Tests
 on:
   push:
-    branches: [main, master]
+    branches: [master]
   pull_request:
-    branches: [main, master]
-# Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    branches: [master]
 
 jobs:
   Playwright-tests:
@@ -62,3 +61,4 @@ jobs:
       - name: Deploy Playwright result to Github Pages
         id: deployment
         uses: actions/deploy-pages@v1.2.4
+#
